@@ -17,15 +17,13 @@ class Vehicules
 
 
 
-    public function __construct(string $marque, string $modele, int $puissance, string $description, float $prix_depart, string $date_depart, string $date_limite_de_fin)
+    public function __construct(string $marque, string $modele, int $puissance, string $description, float $prix_depart)
     {
         $this->marque = $marque;
         $this->modele = $modele;
         $this->puissance = $puissance;
         $this->description = $description;
         $this->prix_depart = $prix_depart;
-        $this->date_depart = $date_depart;
-        $this->date_limite_de_fin = $date_limite_de_fin;
     }
 
     public function get_show_marque(): string
@@ -62,10 +60,10 @@ class Vehicules
         }
     }
 
-    public function get_show_date_limite_de_fin(): string
+    public function set_date_fin(string $date_fin): void
     {
-        if ($this->date_limite_de_fin > $this->date_depart . strtotime("+1 weeks")) {
-            return "Durée de l'enchère limitée à une semaine";
+        if (strtotime($date_fin) <= strtotime($this->date_depart . " +1 week")) {
+            $this->date_limite_de_fin = $date_fin;
         }
     }
 }
