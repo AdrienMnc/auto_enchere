@@ -39,7 +39,7 @@
         <input type="submit" value="Inscription">
     </form>
 
-    <a href="index.php">Retourner à la page de connexion</a>
+    <a href="">Retourner à la page de connexion</a>
 
 
 

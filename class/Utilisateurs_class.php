@@ -26,24 +26,29 @@ class Utilisateurs
         $this->nom = ucfirst($nom);
         $this->prenom = ucfirst($prenom);
         $this->email = $email;
-        $this->mot_de_passe = password_hash($mot_de_passe, PASSWORD_DEFAULT);
+        $this->mot_de_passe = $mot_de_passe;
     }
 
     // Getters
 
-    public function get_show_nom(): string
+    public function get_nom(): string
     {
         return $this->nom;
     }
 
-    public function get_show_prenom(): string
+    public function get_prenom(): string
     {
         return $this->prenom;
     }
 
-    public function get_show_email(): string
+    public function get_email(): string
     {
         return $this->email;
+    }
+
+    public function get_mot_de_passe(): string
+    {
+        return $this->mot_de_passe;
     }
 
 
@@ -57,19 +62,19 @@ class Utilisateurs
 
     /* Méthode statique de récupération d'un utilisateur dans la base de donnée
      *  Cette méthode retourne une instance la classe User */
-    public static function get_utilisateurs(string $nom, string $prenom, string $email, string $mot_de_passe): Utilisateurs | null
-    {
-        global $dbh;
-        $query = $dbh->prepare("SELECT * FROM utilisateurs WHERE nom = ? prenom = ? email = ? mot_de_passe = ?;");
-        $query->execute([$nom, $prenom, $email, $mot_de_passe]);
-        $donnees_utilisateurs = $query->fetchAll(PDO::FETCH_ASSOC);
+    // public static function get_utilisateurs(string $nom, string $prenom, string $email, string $mot_de_passe): Utilisateurs | null
+    // {
+    //     global $dbh;
+    //     $query = $dbh->prepare("SELECT * FROM utilisateurs WHERE nom = ? prenom = ? email = ? mot_de_passe = ?;");
+    //     $query->execute([$nom, $prenom, $email, $mot_de_passe]);
+    //     $donnees_utilisateurs = $query->fetchAll(PDO::FETCH_ASSOC);
 
-        if ($donnees_utilisateurs != false) {
-            $user = new Utilisateurs($donnees_utilisateurs["nom"], $donnees_utilisateurs["prenom"], $donnees_utilisateurs["email"], $donnees_utilisateurs["mot_de_passe"]);
-            $user->id = $donnees_utilisateurs["id"];
-            return $user;
-        } else {
-            return null;
-        }
-    }
+    //     if ($donnees_utilisateurs != false) {
+    //         $user = new Utilisateurs($donnees_utilisateurs["nom"], $donnees_utilisateurs["prenom"], $donnees_utilisateurs["email"], $donnees_utilisateurs["mot_de_passe"]);
+    //         $user->id = $donnees_utilisateurs["id"];
+    //         return $user;
+    //     } else {
+    //         return null;
+    //     }
+    // }
 }
