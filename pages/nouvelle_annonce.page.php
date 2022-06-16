@@ -7,18 +7,26 @@ require_once __DIR__ . "/class/Vehicules_class.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     /* Récupération des valeurs du body de la requête */
-    $marque = $_POST["marque"];
-    $modele = $_POST["modele"];
-    $description = $_POST["description"];
-    $prix_depart = $_POST["prix_depart"];
-    $date_depart = $_POST["date_depart"];
-    $date_limite_de_fin = $_POST["date_limite_de_fin"];
+    $marque = htmlspecialchars($_POST["marque"]);
+    $modele = htmlspecialchars($_POST["modele"]);
+    $puissance = htmlspecialchars($_POST["puissance"]);
+    $description = htmlspecialchars($_POST["description"]);
+    $prix_depart = htmlspecialchars($_POST["prix_depart"]);
+    $date_depart = htmlspecialchars($_POST["date_depart"]);
+    $date_limite_de_fin = htmlspecialchars($_POST["date_limite_de_fin"]);
     
+/* Préparation de la requête */
+
+$query = $dbh->prepare("INSERT INTO vehicules (marque, modele, puissance, description, prix_depart, date_depart, date_limite_de_fin) VALUES (?, ?, ?, ?, ?, ?);");
+
+/* Exécution de la requête */
+
+$result = $query->execute([$marque, $modele, $puissance, $description, $prix_depart, $date_depart, $date_limite_de_fin]);
     
 
-    /* Création des instances "nouveau vehicule" */
+/* Création des instances "nouveau vehicule" */
    
-    $nouvelle_enchere = new Vehicules($marque, $modele, $description, $prix_depart, $date_depart, $date_limite_de_fin);
+$nouvelle_enchere = new Vehicules($marque, $modele, $puissance, $description, $prix_depart, $date_depart, $date_limite_de_fin);
     
 }
 ?>
