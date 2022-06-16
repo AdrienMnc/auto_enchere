@@ -1,11 +1,12 @@
 <?php
 
-include __DIR__ . "/pages/connexion_page.php"
+require_once __DIR__ . "/connexion_page.php";
+require_once __DIR__ . "/index.php";
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8" />
@@ -15,7 +16,7 @@ include __DIR__ . "/pages/connexion_page.php"
 </head>
 
 <body>
-  <h1>Bonjour</h1>
+
 
   <?php afficher_connexion_page(); ?>
 
