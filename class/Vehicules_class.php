@@ -7,13 +7,13 @@ namespace Vehicules;
 class Vehicules
 {
 
-    protected string $marque;
-    protected string $modele;
-    protected int $puissance;
-    protected string $description;
-    protected float $prix_depart;
-    protected string $date_depart;
-    protected string $date_limite_de_fin;
+    public string $marque;
+    public string $modele;
+    public int $puissance;
+    public string $description;
+    public float $prix_depart;
+    public string $date_depart;
+    public string $date_limite_de_fin;
 
 
     // Fonction constructrice Vehicule
@@ -56,7 +56,7 @@ class Vehicules
 
     public function show_puissance(): int
     {
-        return $this->puissance . "CV";
+        return $this->puissance . "cv";
     }
 
     public function show_description(): string
@@ -83,10 +83,10 @@ class Vehicules
     // Getter permettant que l'enchère ait une durée maximale d'une semaine 
 
 
-    public function set_date_fin(string $date_fin): void
+    public function show_date_fin(): string
     {
-        if (strtotime($date_fin) <= strtotime($this->date_depart . " +1 week")) {
-            $this->date_limite_de_fin = $date_fin;
+        // if (strtotime($date_fin) <= strtotime($this->date_depart . " +1 week")) {
+            return $this->date_limite_de_fin;
         }
-    }
+    // }
 }
