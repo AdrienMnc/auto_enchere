@@ -15,12 +15,12 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 /* Récupération et filtration des données du formulaire */
 $nom = htmlspecialchars($_POST["nom"]);
 $prenom = htmlspecialchars($_POST["prenom"]);
-$email = password_hash($_POST["email"], FILTER_SANITIZE_EMAIL);
+$email = htmlspecialchars($_POST["email"], FILTER_SANITIZE_EMAIL);
 $mot_de_passe = password_hash($_POST["mot_de_passe"], PASSWORD_DEFAULT);
 
 
 /* Création de l'utilisateur */
-$utilisateurs = new Utilisateurs($nom, $prenom, $email, $password);
+$utilisateurs = new Utilisateurs($nom, $prenom, $email, $mot_de_passe);
 $resultat = $utilisateurs->sauvegarder();
 
 

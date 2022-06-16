@@ -1,6 +1,7 @@
 <?php
 
-require_once __DIR__ . "/pages/connexion_page.php";
+
+require_once __DIR__ . "/functions/connexion_page.php";
 
 ?>
 
