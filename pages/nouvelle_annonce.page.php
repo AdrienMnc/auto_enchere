@@ -1,34 +1,47 @@
 <?php
 
 /* Imports */
-require_once __DIR__ . "/class/Vehicules_class.php";
+
+
+require_once __DIR__ . "../../pages/connexion_bd.page.php";
+
+// Utilisation du NameSpace
+
+
 
 /* Traitement de la requête si le verbe HTTP est POST */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    http_response_code(405);
+    die();
+}    
 
-    /* Récupération des valeurs du body de la requête */
-    $marque = htmlspecialchars($_POST["marque"]);
-    $modele = htmlspecialchars($_POST["modele"]);
-    $puissance = htmlspecialchars($_POST["puissance"]);
-    $description = htmlspecialchars($_POST["description"]);
-    $prix_depart = htmlspecialchars($_POST["prix_depart"]);
-    $date_depart = htmlspecialchars($_POST["date_depart"]);
-    $date_limite_de_fin = htmlspecialchars($_POST["date_limite_de_fin"]);
+/* Récupération des valeurs du body de la requête */
+$marque = htmlspecialchars($_POST["marque"]);
+$modele = htmlspecialchars($_POST["modele"]);
+$puissance = htmlspecialchars($_POST["puissance"]);
+$description = htmlspecialchars($_POST["description"]);
+$prix_depart = htmlspecialchars($_POST["prix_depart"]);
+$date_depart = htmlspecialchars($_POST["date_depart"]);
+$date_limite_de_fin = htmlspecialchars($_POST["date_limite_de_fin"]);
     
 /* Préparation de la requête */
 
-$query = $dbh->prepare("INSERT INTO vehicules (marque, modele, puissance, description, prix_depart, date_depart, date_limite_de_fin) VALUES (?, ?, ?, ?, ?, ?);");
+$query = $dbh->prepare("INSERT INTO vehicules (marque, modele, puissance, description, prix_depart, date_depart, date_limite_de_fin) VALUES (?, ?, ?, ?, ?, ?, ?);");
 
 /* Exécution de la requête */
 
 $result = $query->execute([$marque, $modele, $puissance, $description, $prix_depart, $date_depart, $date_limite_de_fin]);
     
+/* Récupération des données retournées par la requête */
 
-/* Création des instances "nouveau vehicule" */
+$vehicules = $query->fetchAll(PDO::FETCH_ASSOC);
+var_dump($result);
+
+// /* Création des instances "nouveau vehicule" */
    
-$nouvelle_enchere = new Vehicules($marque, $modele, $puissance, $description, $prix_depart, $date_depart, $date_limite_de_fin);
+// $nouvelle_enchere = new Vehicules($marque, $modele, $puissance, $description, $prix_depart, $date_depart, $date_limite_de_fin);
     
-}
+
 ?>
 
 
