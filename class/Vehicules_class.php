@@ -2,8 +2,6 @@
 
 namespace Vehicules;
 
-use DateTime;
-
 // Création de la classe Vehicule
 
 class Vehicules
