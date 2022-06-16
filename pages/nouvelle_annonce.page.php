@@ -42,7 +42,7 @@
 
         <div>
             <label>Date d'expiration de l'enchère (la durée ne doit pas dépasser une semaine)</label>
-            <input type="date"  name="date_limite_de_fin">
+            <input type="date"  name="date_limite_de_fin_input">
         </div>
         
         <div>

@@ -1,7 +1,7 @@
 <?php
 
 /* Imports */
-require_once __DIR__ . "../../pages/connexion_bd.page.php";
+require_once __DIR__ . "/connexion_bd.page.php";
 require_once __DIR__ . "../../class/Vehicules_class.php";
 
 /* Ouverture de session */
@@ -12,10 +12,10 @@ use Vehicules\Vehicules;
 
 
 /* Traitement de la requête si le verbe HTTP est POST */
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] != "POST") {
     http_response_code(405);
     die();
-}    
+}   
 
 /* Récupération et filtration des données du formulaire */
 $marque = htmlspecialchars($_POST["marque"]);
@@ -26,7 +26,7 @@ $prix_depart = htmlspecialchars($_POST["prix_depart"]);
 $date_depart = htmlspecialchars($_POST["date_depart"]);
 $date_limite_de_fin = htmlspecialchars($_POST["date_limite_de_fin"]);
 
-/* Création de l'utilisateur */
+/* Création du vehicule */
 $vehicule = new Vehicules($marque, $modele, $puissance, $description, $prix_depart, $date_depart, $date_limite_de_fin);
 $result = $vehicule->sauve_vehicule_bdd();
 
@@ -45,9 +45,9 @@ $result = $vehicule->sauve_vehicule_bdd();
 
     <div class="affichage_validation_enchere">
 
-        <?php if (isset($nouvelle_enchere)) { ?>
+        <?php if (isset($vehicule)) { ?>
 
-            <h3>L'enchère de votre <?= $nouvelle_enchere->marque; ?> <?= $nouvelle_enchere->modele; ?> est bien enregistrée !</h3>
+            <h3>L'enchère de votre <?= $vehicule->marque; ?> <?= $vehicule->modele; ?> est bien enregistrée !</h3>
 
             <br>
 
@@ -55,16 +55,16 @@ $result = $vehicule->sauve_vehicule_bdd();
 
             <br>
         
-            <p> Puissance du véhicule : <?= $nouvelle_enchere->puissance; ?> </p>
+            <p> Puissance du véhicule : <?= $vehicule->puissance; ?> </p>
             <br>
             
-            <p> Prix de départ : <?= $nouvelle_enchere->prix_depart; ?> </p>
+            <p> Prix de départ : <?= $vehicule->prix_depart; ?> </p>
             <br>
 
-            <p> Description de votre véhicule : <?= $nouvelle_enchere->description; ?> </p>
+            <p> Description de votre véhicule : <?= $vehicule->description; ?> </p>
             <br>
 
-            <p> Votre enchère se terminera le <?= $nouvelle_enchere->date_limite_de_fin; ?> </p>
+            <p> Votre enchère se terminera le <?= $vehicule->date_limite_de_fin; ?> </p>
             <br>
 
             
