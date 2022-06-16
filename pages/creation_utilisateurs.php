@@ -2,6 +2,7 @@
 
 /* Imports */
 require __DIR__ . "../../class/Utilisateurs_class.php";
+require_once __DIR__ . "/connexion_bd.page.php";
 
 use Utilisateurs\Utilisateurs;
 

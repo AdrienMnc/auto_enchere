@@ -56,7 +56,7 @@ class Utilisateurs
     public function sauvegarder(): int
     {
         global $dbh;
-        $query = $dbh->prepare("INSERT INTO users (nom, prenom, email, mot_de_passe) VALUES (?, ?, ?, ?);");
+        $query = $dbh->prepare("INSERT INTO utilisateurs (nom, prenom, email, mot_de_passe) VALUES (?, ?, ?, ?);");
         return $query->execute([$this->nom, $this->prenom, $this->email, $this->mot_de_passe]);
     }
 
