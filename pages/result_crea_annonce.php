@@ -8,6 +8,7 @@ require_once __DIR__ . "../../class/Vehicules_class.php";
 session_start();
 
 // Utilisation du NameSpace
+
 use Vehicules\Vehicules;
 
 
@@ -28,7 +29,9 @@ $date_limite_de_fin = htmlspecialchars($_POST["date_limite_de_fin"]);
 
 /* Création du vehicule */
 $vehicule = new Vehicules($marque, $modele, $puissance, $description, $prix_depart, $date_depart, $date_limite_de_fin);
-$result = $vehicule->sauve_vehicule_bdd();
+$vehicule->sauve_vehicule_bdd();
+
+
 
 ?>
 
@@ -47,25 +50,23 @@ $result = $vehicule->sauve_vehicule_bdd();
 
         <?php if (isset($vehicule)) { ?>
 
-            <h3>L'enchère de votre <?= $vehicule->marque; ?> <?= $vehicule->modele; ?> est bien enregistrée !</h3>
+            <h3>L'annonce de votre <?= $vehicule->marque; ?> <?= $vehicule->modele; ?> est bien enregistrée !</h3>
 
             <br>
 
-            <p> Récapitulatif de votre enchère : </p>
-
+             <p>Les enchères commenceront le <?= $vehicule->date_depart; ?> et se termineront le <?= $vehicule->date_limite_de_fin; ?> </p>
             <br>
-        
+
+
+            <h4> Informations complémentaires conernant votre annonce: </h4>
+
+          
             <p> Puissance du véhicule : <?= $vehicule->puissance; ?> </p>
-            <br>
-            
             <p> Prix de départ : <?= $vehicule->prix_depart; ?> </p>
-            <br>
-
             <p> Description de votre véhicule : <?= $vehicule->description; ?> </p>
-            <br>
+           
 
-            <p> Votre enchère se terminera le <?= $vehicule->date_limite_de_fin; ?> </p>
-            <br>
+            
 
             
 
