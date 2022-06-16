@@ -37,10 +37,10 @@ $resultat = $utilisateurs->sauvegarder();
 
 <body>
     <?php if ($resultat == 1) { ?>
-        <p>Nom = <?= $user->nom ?> créé</p>
-        <p>Prénom = <?= $user->prenom ?> créé</p>
-        <p>Email = <?= $user->email ?> créé</p>
-        <p>Mot de passe = <?= $user->mot_de_passe ?> créé</p>
+        <p>Nom = <?= $utilisateurs->nom ?> créé</p>
+        <p>Prénom = <?= $utilisateurs->prenom ?> créé</p>
+        <p>Email = <?= $utilisateurs->email ?> créé</p>
+        <p>Mot de passe = <?= $utilisateurs->mot_de_passe ?> créé</p>
     <?php } else { ?>
         <p>Une erreur s'est produite</p>
     <?php } ?>
