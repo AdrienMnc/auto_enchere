@@ -53,12 +53,12 @@ class Utilisateurs
 
 
     /* Sauvegarde de l'objet utilisateur dans la base de données */
-    public function sauvegarder(): int
-    {
-        global $dbh;
-        $query = $dbh->prepare("INSERT INTO utilisateurs (nom, prenom, email, mot_de_passe) VALUES (?, ?, ?, ?);");
-        return $query->execute([$this->nom, $this->prenom, $this->email, $this->mot_de_passe]);
-    }
+    // public function sauvegarder(): int
+    // {
+    //     global $dbh;
+    //     $query = $dbh->prepare("INSERT INTO utilisateurs (nom, prenom, email, mot_de_passe) VALUES (?, ?, ?, ?);");
+    //     return $query->execute([$this->nom, $this->prenom, $this->email, $this->mot_de_passe]);
+    // }
 
     /* Méthode statique de récupération d'un utilisateur dans la base de donnée
      *  Cette méthode retourne une instance la classe User */
