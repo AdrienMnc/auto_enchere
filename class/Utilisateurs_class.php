@@ -2,6 +2,8 @@
 
 namespace Utilisateurs;
 
+// Création de la classe Utilisateur
+
 class Utilisateurs
 {
 
@@ -10,7 +12,7 @@ class Utilisateurs
     protected string $email;
     protected string $mot_de_passe;
 
-
+    // Fonction constructrice Utilisateur
 
     public function __construct(string $nom, string $prenom, string $email, string $mot_de_passe)
     {

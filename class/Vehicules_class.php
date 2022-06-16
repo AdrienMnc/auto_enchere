@@ -4,6 +4,8 @@ namespace Vehicules;
 
 use DateTime;
 
+// Création de la classe Vehicule
+
 class Vehicules
 {
 
@@ -16,6 +18,7 @@ class Vehicules
     protected string $date_limite_de_fin;
 
 
+    // Fonction constructrice Vehicule
 
     public function __construct(string $marque, string $modele, int $puissance, string $description, float $prix_depart, string $date_depart, string $date_limite_de_fin)
     {
@@ -53,6 +56,8 @@ class Vehicules
         return number_format($this->prix_depart, 2) . "€";
     }
 
+    // Getter permettant que la date de départ de l'enchère ne soit pas antérieure à la date du jour
+
     public function get_show_date_depart(): string
     {
         if (Date("d - m - y") <= $this->date_depart) {
@@ -62,6 +67,8 @@ class Vehicules
         }
     }
 
+    // Getter permettant que l'enchère ait une durée maximale d'une semaine 
+    
     public function get_show_date_limite_de_fin(): string
     {
         if ($this->date_limite_de_fin > $this->date_depart . strtotime("+1 weeks")) {
