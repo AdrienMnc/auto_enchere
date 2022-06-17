@@ -1,5 +1,6 @@
 <?php
 
+
 /* Imports */
 
 require_once __DIR__ . "../../pages/connexion_bd.page.php";
@@ -10,7 +11,7 @@ require_once __DIR__ . "../../pages/connexion_bd.page.php";
 
 class Utilisateurs
 {
-
+    public string $id;
     protected string $nom;
     protected string $prenom;
     protected string $email;
@@ -59,19 +60,19 @@ class Utilisateurs
 
     /* Méthode statique de récupération d'un utilisateur dans la base de donnée
      *  Cette méthode retourne une instance la classe User */
-    // public static function get_utilisateurs(string $nom, string $prenom, string $email, string $mot_de_passe): Utilisateurs | null
-    // {
-    //     global $dbh;
-    //     $query = $dbh->prepare("SELECT * FROM utilisateurs WHERE nom = ? prenom = ? email = ? mot_de_passe = ?;");
-    //     $query->execute([$nom, $prenom, $email, $mot_de_passe]);
-    //     $donnees_utilisateurs = $query->fetchAll(PDO::FETCH_ASSOC);
+    public static function get_utilisateurs(string $email)
+    {
+        global $dbh;
+        $query = $dbh->prepare("SELECT * FROM utilisateurs WHERE email = ?");
+        $query->execute([$email]);
+        $donnees_utilisateurs = $query->fetchAll(PDO::FETCH_ASSOC);
 
-    //     if ($donnees_utilisateurs != false) {
-    //         $user = new Utilisateurs($donnees_utilisateurs["nom"], $donnees_utilisateurs["prenom"], $donnees_utilisateurs["email"], $donnees_utilisateurs["mot_de_passe"]);
-    //         $user->id = $donnees_utilisateurs["id"];
-    //         return $user;
-    //     } else {
-    //         return null;
-    //     }
-    // }
+        if ($donnees_utilisateurs != false) {
+            $utilisateurs = new Utilisateurs($donnees_utilisateurs["nom"], $donnees_utilisateurs["prenom"], $donnees_utilisateurs["email"], $donnees_utilisateurs["mot_de_passe"]);
+            $utilisateurs->id = $donnees_utilisateurs["id"];
+            return $utilisateurs;
+        } else {
+            return null;
+        }
+    }
 }

@@ -54,7 +54,7 @@ $utilisateurs = new Utilisateurs($nom, $prenom, $email, $mot_de_passe);
         <p>Prénom => <?= $prenom ?> </p>
         <p>Email => <?= $email ?> </p>
 
-        <a href="">Redirection vers le site</a>
+        <a href="affichage_des_annonces.page.php">Redirection vers le site</a>
 
     <?php } else { ?>
         <p>Une erreur s'est produite</p>

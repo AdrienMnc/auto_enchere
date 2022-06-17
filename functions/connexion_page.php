@@ -4,17 +4,7 @@
 
     <h1>Connexion</h1>
 
-    <form action="" method="POST">
-
-        <div>
-            <label for="nom_connexion">Nom :</label>
-            <input type="text" name="nom" id="nom_connexion" required />
-        </div>
-
-        <div>
-            <label for="prenom_connexion">Prénom :</label>
-            <input type="text" name="prenom" id="prenom_connexion" required />
-        </div>
+    <form action="../pages/connexion_utilisateurs_page.php" method="POST">
 
         <div>
             <label for="email_connexion">Email :</label>
