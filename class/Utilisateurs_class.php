@@ -1,8 +1,5 @@
 <?php
 
-namespace Utilisateurs;
-
-
 /* Imports */
 
 require_once __DIR__ . "../../pages/connexion_bd.page.php";

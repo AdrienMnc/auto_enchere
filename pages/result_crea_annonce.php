@@ -7,11 +7,6 @@ require_once __DIR__ . "../../class/Vehicules_class.php";
 /* Ouverture de session */
 session_start();
 
-// Utilisation du NameSpace
-
-use Vehicules\Vehicules;
-
-
 /* Traitement de la requête si le verbe HTTP est POST */
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
     http_response_code(405);
@@ -50,20 +45,21 @@ $vehicule->sauve_vehicule_bdd();
 
         <?php if (isset($vehicule)) { ?>
 
-            <h3>L'annonce de votre <?= $vehicule->marque; ?> <?= $vehicule->modele; ?> est bien enregistrée !</h3>
+            <h3>L'annonce de votre <?= $vehicule->get_marque(); ?> <?= $vehicule->get_modele(); ?> est bien enregistrée !</h3>
 
             <br>
 
-             <p>Les enchères commenceront le <?= $vehicule->date_depart; ?> et se termineront le <?= $vehicule->date_limite_de_fin; ?> </p>
+             <p>Les enchères commenceront le <?= $vehicule->get_date_depart(); ?> et se termineront le <?= $vehicule->get_date_fin(); ?> </p>
             <br>
 
+            <p> Le prix de départ est fixé à <?= $vehicule->get_prix_depart(); ?> </p>
+            <br>
 
-            <h4> Informations complémentaires conernant votre annonce: </h4>
-
-          
-            <p> Puissance du véhicule : <?= $vehicule->puissance; ?> </p>
-            <p> Prix de départ : <?= $vehicule->prix_depart; ?> </p>
-            <p> Description de votre véhicule : <?= $vehicule->description; ?> </p>
+            <h4> Description de votre véhicule : </h4>
+                  
+            <p> Puissance du véhicule : <?= $vehicule->get_puissance(); ?> </p>
+        
+            <p> Description de votre véhicule : <?= $vehicule->get_description(); ?> </p>
            
 
             
