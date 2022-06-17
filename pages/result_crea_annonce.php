@@ -42,6 +42,9 @@ $result = $vehicule->sauve_vehicule_bdd();
 </head>
 <body>
     <!-- Affichage de la validation de l'enchère-->
+<header>
+    <?php include __DIR__ . "../../includes/profil.incl.php" ?>
+</header>
 
     <div class="affichage_validation_enchere">
 
