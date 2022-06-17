@@ -60,15 +60,22 @@ $vehicule->sauve_vehicule_bdd();
             <p> Puissance du véhicule : <?= $vehicule->get_puissance(); ?> </p>
         
             <p> Description de votre véhicule : <?= $vehicule->get_description(); ?> </p>
-           
 
-            
+            <br>
+           
+            <form action="affichage_des_annonces.page.php" method="POST">
+
+            <input type="submit" value="Retour à l'accueil">
+
+            </form>
 
             
 
         
         <?php } ?>
 
+        
+            
     </div>
 </body>
 </html>

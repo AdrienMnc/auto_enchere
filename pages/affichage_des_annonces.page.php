@@ -31,12 +31,11 @@ $vehicules = $query->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-    <form action="nouvelle_annonce.page.php" method="POST">
-    <h2>Déposer une Annonce</h2>
-    <input type="submit" value="Nouvelle enchère">
-
-    </form>
-
+<nav>
+    <a href="/auto_enchere/pages/nouvelle_annonce.page.php">Déposer une annonce</a>
+    <a href="/auto_enchere/pages/inscription_page.php">Inscription</a>
+    <a href="/auto_enchere/pages/connexion_utilisateurs_page.php">Connexion</a>
+</nav>
 
     <div>
         <h2>Enchères en cours</h2>
@@ -47,6 +46,9 @@ $vehicules = $query->fetchAll(PDO::FETCH_ASSOC);
                     <li>Modéle : <?= $vehicule["modele"]; ?></li>
                     <li>Puissance : <?= $vehicule["puissance"]; ?> CV</li>
                     <li>Date de fin de l'enchère : <?= $vehicule["date_limite_de_fin"]; ?></li>
+                    <li>Enchère en cours:</li>
+                    <li>Date de la dernière enchère:</li>
+                    <li><input type="submit" value="Encherir"></li>
                 </ul>
 
         <?php }
