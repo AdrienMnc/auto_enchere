@@ -1,41 +1,45 @@
 <?php
 
-// Création de la classe Vehicule
+// Création de la classe Enchere
 
 class Encheres
 {
 
     protected float $prix_actuel;
     protected string $date_enchere;
+
   
 
 
-    // Fonction constructrice Vehicule
+    // Fonction constructrice Enchere
 
     public function __construct(
-        string $marque,
-        string $modele,
-        int $puissance,
-        string $description,
-        float $prix_depart,
-        string $date_depart,
-        string $date_limite_de_fin
+        float $prix_actuel,
+        string $date_enchere,
+       
     ) {
-        $this->marque = $marque;
-        $this->modele = $modele;
-        $this->puissance = $puissance;
-        $this->description = $description;
-        $this->prix_depart = $prix_depart;
-        $this->date_depart = date('d-m-Y à H:i:s', strtotime($date_depart));
-        $this->date_limite_de_fin = date('d-m-Y à H:i:s', strtotime($date_limite_de_fin));
+        $this->prix_actuel = $prix_actuel;
+        $this->date_enchere = date('d-m-Y à H:i:s', strtotime($date_enchere));
+   
     }
 
     /* Sauvegarde de l'objet vehicule dans la base de données */
-    public function sauve_vehicule_bdd(): int
+    public function maj_enchere_bdd(): int
     {
         global $dbh;
-        $query = $dbh->prepare("INSERT INTO vehicules (marque, modele, puissance, description, prix_depart, date_depart, date_limite_de_fin) VALUES (?, ?, ?, ?, ?, ?, ?);");
-        return $query->execute([$this->marque, $this->modele, $this->puissance, $this->description, $this->prix_depart, $this->date_depart, $this->date_limite_de_fin]);
+        $query = $dbh->prepare("INSERT INTO encheres (prix_actuel, date_enchere) VALUES (?, ?);");
+        return $query->execute([$this->prix_actuel, $this->date_enchere]);
     }
+
+    public function get_prix_actuel(): string
+    {
+        return number_format($this->prix_actuel, 2) . "€";
+    }
+
+     public function get_date_enchere(): string
+    {
+        return $this->date_enchere;
+    }
+
 
 }
