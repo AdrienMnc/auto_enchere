@@ -1,7 +1,7 @@
 <?php
 /* Connection à la base de données*/
 require_once __DIR__ . "/connexion_bd.page.php";
-require_once __DIR__ . "../../class/Vehicules_class.php";
+require_once __DIR__ . "/../class/Vehicules_class.php";
 
 /* Ouverture de session */
 session_start();
@@ -17,9 +17,8 @@ $vehicules = $query->fetchAll(PDO::FETCH_ASSOC);
 
 var_dump($vehicules);
 
-$vehicule = new Vehicules($vehicules["marque"], $vehicules["modele"], $vehicules["puissance"], $vehicules["description"], $vehicules["prix_depart"],$vehicule["date_depart"],$vehicule["date_limite_de_fin"]);
-
-var_dump($vehicule);
+// $vehicule = new Vehicules($vehicule["marque"], $vehicule["modele"], $vehicule["puissance"], $vehicule["description"], $vehicule["prix_depart"],$vehicule["date_depart"],$vehicule["date_limite_de_fin"]);
+// var_dump($vehicule);
 ?>
 
 <!DOCTYPE html>
@@ -37,11 +36,10 @@ var_dump($vehicule);
         <?php if (isset($vehicules)) {
             foreach ($vehicules as $vehicule) { ?>
                 <ul>
-                    <li>Marques : <?= $vehicule->marque; ?></li>
-                    <li>Modéle : <?= $vehicule->modele; ?></li>
-                    <li>Puissance : <?= $vehicule->show_puissance(); ?></li>
+                    <li>Marques : <?= $vehicule["marque"]; ?></li>
+                    <li>Modéle : <?= $vehicule["modele"]; ?></li>
+                    <li>Puissance : <?= $vehicule["puissance"]; ?>ch</li>
                 </ul>
-
         <?php }
         } ?>
     </div>
