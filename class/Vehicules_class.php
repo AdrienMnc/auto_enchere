@@ -33,8 +33,8 @@ class Vehicules
         $this->puissance = $puissance;
         $this->description = $description;
         $this->prix_depart = $prix_depart;
-        $this->date_depart = date('d-m-Y à H:i:s', strtotime($date_depart));
-        $this->date_limite_de_fin = date('d-m-Y à H:i:s', strtotime($date_limite_de_fin));
+        $this->date_depart = date('d-m-Y', strtotime($date_depart));
+        $this->date_limite_de_fin = date('d-m-Y', strtotime($date_limite_de_fin));
     }
 
     /* Sauvegarde de l'objet vehicule dans la base de données */
