@@ -6,8 +6,6 @@ require_once __DIR__ . "/../class/Vehicules_class.php";
 /* Ouverture de session */
 session_start();
 
-/* Utilisation du NameSpace  */
-use Vehicules\Vehicules;
 
 /* Préparation de la requête */
 $query = $dbh->prepare("SELECT * FROM vehicules");
@@ -17,8 +15,9 @@ $vehicules = $query->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-// $vehicule = new Vehicules($vehicule["marque"], $vehicule["modele"], $vehicule["puissance"], $vehicule["description"], $vehicule["prix_depart"],$vehicule["date_depart"],$vehicule["date_limite_de_fin"]);
-// var_dump($vehicule);
+// $vehicule = new Vehicules($vehicules["marque"], $vehicules["modele"], $vehicules["puissance"], $vehicules["description"], $vehicules["prix_depart"],$vehicule["date_depart"],$vehicule["date_limite_de_fin"]);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -32,13 +31,24 @@ $vehicules = $query->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
+<nav>
+    <a href="/auto_enchere/pages/nouvelle_annonce.page.php">Déposer une annonce</a>
+    <a href="/auto_enchere/pages/inscription_page.php">Inscription</a>
+    <a href="/auto_enchere/pages/connexion_utilisateurs_page.php">Connexion</a>
+</nav>
+
     <div>
+        <h2>Enchères en cours</h2>
         <?php if (isset($vehicules)) {
             foreach ($vehicules as $vehicule) { ?>
                 <ul>
                     <li>Marques : <?= $vehicule["marque"]; ?></li>
                     <li>Modéle : <?= $vehicule["modele"]; ?></li>
-                    <li>Puissance : <?= $vehicule["puissance"]; ?>ch</li>
+                    <li>Puissance : <?= $vehicule["puissance"]; ?> CV</li>
+                    <li>Date de fin de l'enchère : <?= $vehicule["date_limite_de_fin"]; ?></li>
+                    <li>Enchère en cours:</li>
+                    <li>Date de la dernière enchère:</li>
+                    <li><input type="submit" value="Encherir"></li>
                 </ul>
         <?php }
         } ?>

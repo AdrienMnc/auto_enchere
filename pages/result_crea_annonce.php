@@ -7,11 +7,6 @@ require_once __DIR__ . "../../class/Vehicules_class.php";
 /* Ouverture de session */
 session_start();
 
-// Utilisation du NameSpace
-
-use Vehicules\Vehicules;
-
-
 /* Traitement de la requête si le verbe HTTP est POST */
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
     http_response_code(405);
@@ -46,12 +41,41 @@ var_dump($vehicule);
 <body>
     <!-- Affichage de la validation de l'enchère-->
 
-    <?php if ($result == 1) { ?>
-        <p>Le véhicule <?= $vehicule->marque ?> créé</p>
-    <?php } else { ?>
-        <p>Une erreur s'est produite</p>
-    <?php } ?>
+    <div class="affichage_validation_enchere">
 
+        <?php if (isset($vehicule)) { ?>
+
+            <h3>L'annonce de votre <?= $vehicule->get_marque(); ?> <?= $vehicule->get_modele(); ?> est bien enregistrée !</h3>
+
+            <br>
+
+             <p>Les enchères commenceront le <?= $vehicule->get_date_depart(); ?> et se termineront le <?= $vehicule->get_date_fin(); ?> </p>
+            <br>
+
+            <p> Le prix de départ est fixé à <?= $vehicule->get_prix_depart(); ?> </p>
+            <br>
+
+            <h4> Description de votre véhicule : </h4>
+                  
+            <p> Puissance du véhicule : <?= $vehicule->get_puissance(); ?> </p>
+        
+            <p> Description de votre véhicule : <?= $vehicule->get_description(); ?> </p>
+
+            <br>
+           
+            <form action="affichage_des_annonces.page.php" method="POST">
+
+            <input type="submit" value="Retour à l'accueil">
+
+            </form>
+
+            
+
+        
+        <?php } ?>
+
+        
+            
     </div>
 </body>
 </html>
