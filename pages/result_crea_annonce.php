@@ -24,9 +24,9 @@ $date_limite_de_fin = htmlspecialchars($_POST["date_limite_de_fin"]);
 
 /* Création du vehicule */
 $vehicule = new Vehicules($marque, $modele, $puissance, $description, $prix_depart, $date_depart, $date_limite_de_fin);
-$vehicule->sauve_vehicule_bdd();
+$result = $vehicule->sauve_vehicule_bdd();
 
-
+var_dump($vehicule);
 
 ?>
 

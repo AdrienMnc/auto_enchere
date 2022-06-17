@@ -1,7 +1,7 @@
 <?php
 /* Connection à la base de données*/
 require_once __DIR__ . "/connexion_bd.page.php";
-require_once __DIR__ . "../../class/Vehicules_class.php";
+require_once __DIR__ . "/../class/Vehicules_class.php";
 
 /* Ouverture de session */
 session_start();
@@ -50,7 +50,6 @@ $vehicules = $query->fetchAll(PDO::FETCH_ASSOC);
                     <li>Date de la dernière enchère:</li>
                     <li><input type="submit" value="Encherir"></li>
                 </ul>
-
         <?php }
         } ?>
     </div>

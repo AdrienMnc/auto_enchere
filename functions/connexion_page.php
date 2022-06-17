@@ -1,10 +1,9 @@
 <?php function afficher_connexion_page()
 { ?>
 
-
     <h1>Connexion</h1>
 
-    <form action="../pages/connexion_utilisateurs_page.php" method="POST">
+    <form action="/pages/connexion_utilisateur.page.php" method="POST">
 
         <div>
             <label for="email_connexion">Email :</label>

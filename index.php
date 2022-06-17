@@ -1,6 +1,9 @@
 <?php
+/* Démarrage de la session */
+session_start();
 
-
+/* Imports */
+require_once __DIR__ . "/pages/connexion_bd.page.php";
 require_once __DIR__ . "/functions/connexion_page.php";
 
 ?>
@@ -16,7 +19,9 @@ require_once __DIR__ . "/functions/connexion_page.php";
 </head>
 
 <body>
-
+  <header>
+  <?php include __DIR__ . "/includes/profil.incl.php"; ?>
+  </header>
 
   <?php afficher_connexion_page(); ?>
 
