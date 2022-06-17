@@ -1,4 +1,5 @@
 <?php
+use Vehicules\Vehicules;
 
 /* Imports */
 require_once __DIR__ . "/connexion_bd.page.php";
@@ -23,10 +24,11 @@ $date_depart = htmlspecialchars($_POST["date_depart"]);
 $date_limite_de_fin = htmlspecialchars($_POST["date_limite_de_fin"]);
 
 /* Création du vehicule */
+
 $vehicule = new Vehicules($marque, $modele, $puissance, $description, $prix_depart, $date_depart, $date_limite_de_fin);
 $result = $vehicule->sauve_vehicule_bdd();
 
-var_dump($vehicule);
+
 
 ?>
 

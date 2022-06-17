@@ -10,7 +10,7 @@
 
     <h1>Inscription</h1>
 
-    <form action="/pages/creation_utilisateur.page.php" method="POST">
+    <form action="creation_utilisateur.page.php" method="POST">
 
         <div>
             <label for="nom_connexion">Nom :</label>

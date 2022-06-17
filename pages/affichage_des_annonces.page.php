@@ -34,7 +34,7 @@ $vehicules = $query->fetchAll(PDO::FETCH_ASSOC);
 <nav>
     <a href="/auto_enchere/pages/nouvelle_annonce.page.php">Déposer une annonce</a>
     <a href="/auto_enchere/pages/inscription_page.php">Inscription</a>
-    <a href="/auto_enchere/pages/connexion_utilisateurs_page.php">Connexion</a>
+    <a href="/auto_enchere/pages/connexion_utilisateur.page.php">Connexion</a>
 </nav>
 
     <div>
