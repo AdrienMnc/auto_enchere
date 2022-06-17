@@ -1,18 +1,19 @@
-<?php
-session_start();
-//session_destroy sert à detruire la session  
-session_destroy();
-echo " Vous êtes déconnecté";
-?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Enchérir</title>
 </head>
 <body>
-    Bonjour
+   
+Bienvenue sur la page enchère 
+
 </body>
 </html>
