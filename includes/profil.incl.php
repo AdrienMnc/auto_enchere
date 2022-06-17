@@ -1,0 +1,2 @@
+<p>Votre adresse email est <?= $_SESSION["utilisateur_email"] ?> et votre id <?= $_SESSION["utilisateur_id"] ?> .</p>
+<a href="/pages/profil_utilisateur.page.php">Connecter à <?= $_SESSION["utilisateur_prenom"] ?> <?= $_SESSION["utilisateur_nom"] ?></a>

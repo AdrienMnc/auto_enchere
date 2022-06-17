@@ -15,7 +15,7 @@ $result = $query->execute();
 
 $vehicules = $query->fetchAll(PDO::FETCH_ASSOC);
 
-var_dump($vehicules);
+
 
 // $vehicule = new Vehicules($vehicule["marque"], $vehicule["modele"], $vehicule["puissance"], $vehicule["description"], $vehicule["prix_depart"],$vehicule["date_depart"],$vehicule["date_limite_de_fin"]);
 // var_dump($vehicule);

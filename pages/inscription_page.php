@@ -3,18 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <title>inscription_page</title>
+    <title>Auto Enchére || Incription</title>
 </head>
 
 <body>
 
-
-
-
     <h1>Inscription</h1>
 
-    <form action="creation_utilisateurs.php" method="POST">
+    <form action="/pages/creation_utilisateur.page.php" method="POST">
 
         <div>
             <label for="nom_connexion">Nom :</label>

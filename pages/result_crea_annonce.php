@@ -29,9 +29,9 @@ $date_limite_de_fin = htmlspecialchars($_POST["date_limite_de_fin"]);
 
 /* Création du vehicule */
 $vehicule = new Vehicules($marque, $modele, $puissance, $description, $prix_depart, $date_depart, $date_limite_de_fin);
-$vehicule->sauve_vehicule_bdd();
+$result = $vehicule->sauve_vehicule_bdd();
 
-
+var_dump($vehicule);
 
 ?>
 
@@ -46,32 +46,11 @@ $vehicule->sauve_vehicule_bdd();
 <body>
     <!-- Affichage de la validation de l'enchère-->
 
-    <div class="affichage_validation_enchere">
-
-        <?php if (isset($vehicule)) { ?>
-
-            <h3>L'annonce de votre <?= $vehicule->marque; ?> <?= $vehicule->modele; ?> est bien enregistrée !</h3>
-
-            <br>
-
-             <p>Les enchères commenceront le <?= $vehicule->date_depart; ?> et se termineront le <?= $vehicule->date_limite_de_fin; ?> </p>
-            <br>
-
-
-            <h4> Informations complémentaires conernant votre annonce: </h4>
-
-          
-            <p> Puissance du véhicule : <?= $vehicule->puissance; ?> </p>
-            <p> Prix de départ : <?= $vehicule->prix_depart; ?> </p>
-            <p> Description de votre véhicule : <?= $vehicule->description; ?> </p>
-           
-
-            
-
-            
-
-        
-        <?php } ?>
+    <?php if ($result == 1) { ?>
+        <p>Le véhicule <?= $vehicule->marque ?> créé</p>
+    <?php } else { ?>
+        <p>Une erreur s'est produite</p>
+    <?php } ?>
 
     </div>
 </body>

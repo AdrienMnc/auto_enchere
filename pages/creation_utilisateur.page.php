@@ -1,8 +1,7 @@
 <?php
 
 /* Imports */
-require __DIR__ . "../../class/Utilisateurs_class.php";
-require_once __DIR__ . "/connexion_bd.page.php";
+require_once __DIR__ . "/../class/Utilisateurs_class.php";
 
 use Utilisateurs\Utilisateurs;
 
@@ -20,18 +19,9 @@ $email = htmlspecialchars($_POST["email"], FILTER_SANITIZE_EMAIL);
 $mot_de_passe = password_hash($_POST["mot_de_passe"], PASSWORD_DEFAULT);
 
 
-
-
-
 /* Création de l'utilisateur */
-
-$query = $dbh->prepare("INSERT INTO utilisateurs (nom, prenom, email, mot_de_passe) VALUES (?, ?, ?, ?);");
-$resultat = $query->execute([$nom, $prenom, $email, $mot_de_passe]);
-
-$utilisateurs = new Utilisateurs($nom, $prenom, $email, $mot_de_passe);
-
-
-
+$utilisateur = new Utilisateurs($nom, $prenom, $email, $mot_de_passe);
+$resultat = $utilisateur->sauve_utilisateur_bdd();
 
 ?>
 
@@ -41,7 +31,7 @@ $utilisateurs = new Utilisateurs($nom, $prenom, $email, $mot_de_passe);
 
 <head>
     <meta charset="UTF-8">
-    <title>creation_utilisateurs</title>
+    <title>Auto Enchére || Creation utilisateur</title>
 </head>
 
 <body>
